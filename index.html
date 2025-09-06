@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>School Spark</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-white text-slate-800 font-sans">
+
+  <!-- Header -->
+  <header class="sticky top-0 z-50 bg-white shadow-md px-6 py-4 flex items-center justify-between">
+    <div class="flex items-center gap-4 hover:scale-105 transition-transform duration-300">
+      <img src="images/logo.png" alt="School Spark Logo" class="w-12 h-auto" />
+      <h1 class="text-2xl font-bold text-indigo-700 tracking-wide">School Spark</h1>
+    </div>
+    <nav class="flex items-center gap-6 text-slate-700 font-medium">
+      <a href="#features" class="hover:text-indigo-600 transition-colors">Features</a>
+      <a href="#contact" class="hover:text-indigo-600 transition-colors">Contact</a>
+      <a href="#demo" class="bg-yellow-400 text-slate-900 px-4 py-2 rounded-md font-semibold hover:bg-yellow-300 transition-colors">Request a Demo</a>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="px-6 py-20 text-center bg-gradient-to-r from-indigo-50 to-white">
+    <h2 class="text-4xl font-bold text-indigo-800 mb-4">Empowering Educators, Simplifying School Management</h2>
+    <p class="text-lg text-slate-600 max-w-xl mx-auto mb-8">School Spark is your intuitive, scalable platform for managing classrooms, assignments, approvals, and real-time updates — all in one place.</p>
+    <a href="#demo" class="inline-block bg-indigo-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-indigo-500 transition-colors">Get Started</a>
+  </section>
+
+  <!-- Features Section -->
+  <section class="px-6 py-16 bg-white space-y-20">
+
+  <!-- Core Features Carousel -->
+  <div x-data="carousel('core')" x-init="startAutoplay()" @touchstart="handleTouchStart($event)" @touchend="handleTouchEnd($event)">
+    <h2 class="text-3xl font-bold text-center text-indigo-700 mb-8">🎯 Core Features</h2>
+
+    <div class="max-w-3xl mx-auto relative">
+      <template x-for="(feature, index) in features" :key="index">
+        <div x-show="active === index" x-transition
+          class="bg-white rounded-xl shadow-lg hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 p-6 text-center">
+          <img :src="feature.img" :alt="feature.title" class="w-full h-64 object-cover rounded-lg mb-6" />
+          <h3 class="text-xl font-semibold text-indigo-600 mb-2" x-text="feature.title"></h3>
+          <p class="text-slate-600" x-text="feature.desc"></p>
+        </div>      
+      </template>
+
+    <div class="flex justify-center gap-6 mt-8">
+      <button @click="prev()"
+        class="flex items-center gap-2 bg-indigo-600 text-white px-5 py-2 rounded-full shadow hover:bg-indigo-700 hover:shadow-md transition">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg>
+        Prev
+      </button>
+    
+      <button @click="next()"
+        class="flex items-center gap-2 bg-indigo-600 text-white px-5 py-2 rounded-full shadow hover:bg-indigo-700 hover:shadow-md transition">
+        Next
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+      </button>
+    </div>
+
+    </div>
+  </div>
+
+  <!-- Advanced Features Carousel -->
+  <div x-data="carousel('advanced')" x-init="startAutoplay()" @touchstart="handleTouchStart($event)" @touchend="handleTouchEnd($event)">
+    <h2 class="text-3xl font-bold text-center text-indigo-700 mb-8">🚀 Advanced Features</h2>
+
+    <div class="max-w-3xl mx-auto relative">
+      <template x-for="(feature, index) in features" :key="index">
+        <div x-show="active === index" x-transition
+          class="bg-white rounded-xl shadow-lg hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 p-6 text-center">
+          <img :src="feature.img" :alt="feature.title" class="w-full h-64 object-cover rounded-lg mb-6" />
+          <h3 class="text-xl font-semibold text-indigo-600 mb-2" x-text="feature.title"></h3>
+          <p class="text-slate-600" x-text="feature.desc"></p>
+        </div>      
+      </template>
+
+      <div class="flex justify-center gap-6 mt-8">
+        <button @click="prev()"
+          class="flex items-center gap-2 bg-indigo-600 text-white px-5 py-2 rounded-full shadow hover:bg-indigo-700 hover:shadow-md transition">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+          </svg>
+          Prev
+        </button>
+      
+        <button @click="next()"
+          class="flex items-center gap-2 bg-indigo-600 text-white px-5 py-2 rounded-full shadow hover:bg-indigo-700 hover:shadow-md transition">
+          Next
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+</section>
+
+
+
+
+  <!-- Demo Section -->
+  <section id="demo" class="px-6 py-20 text-center bg-white">
+    <h3 class="text-3xl font-bold text-indigo-700 mb-4">Request a Demo</h3>
+    <p class="text-slate-600 max-w-xl mx-auto mb-8">Interested in seeing School Spark in action? Fill out the form below and our team will get in touch with you shortly.</p>
+    <form class="max-w-md mx-auto grid gap-4">
+      <input type="text" placeholder="Your Name" class="border px-4 py-2 rounded-md" />
+      <input type="email" placeholder="Your Email" class="border px-4 py-2 rounded-md" />
+      <textarea placeholder="Your Message" class="border px-4 py-2 rounded-md"></textarea>
+      <button type="submit" class="bg-indigo-600 text-white px-6 py-2 rounded-md font-semibold hover:bg-indigo-500 transition-colors">Submit</button>
+    </form>
+  </section>
+  <!-- Footer -->
+  <footer class="px-6 py-6 bg-white text-center text-slate-500 text-sm">
+    &copy; 2025 School Spark. All rights reserved.
+  </footer>
+<script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+<script>
+function carousel(type) {
+  const data = {
+    core: [
+      { title: '🎓 Student Management', desc: 'Centralized student profiles, enrollment, grades, and progress tracking.', img: 'images/student.jpg' },
+      { title: '👥 Staff Management', desc: 'Role-based access, leave tracking, and performance reviews.', img: 'images/staff.jpg' },
+      { title: '👩‍🏫 Teacher Management', desc: 'Lesson planning, class rosters, and performance analytics.', img: 'images/teacher.jpg' },
+      { title: '🧑‍👧 Parent Engagement', desc: 'Real-time updates, mobile notifications, and two-way communication.', img: 'images/parent.jpg' },
+      { title: '📅 Attendance Management', desc: 'QR code, biometric, and manual attendance tracking with reports.', img: 'images/attendance.jpg' },
+      { title: '🏢 Multi-School Management', desc: 'Manage multiple campuses from a unified dashboard.', img: 'images/multischool.jpg' },
+      { title: '📚 Academic Management', desc: 'Curriculum planning, timetables, and syllabus tracking.', img: 'images/academic.jpg' },
+      { title: '💰 Financial Management', desc: 'Fees, payroll, budgeting, and financial reports.', img: 'images/finance.jpg' },
+      { title: '📝 Exam Management', desc: 'Exam scheduling, grading, and result publishing.', img: 'images/exam.jpg' },
+      { title: '🚍 Transport Management', desc: 'Live bus tracking, route assignment, and parent notifications.', img: 'images/transport.jpg' }
+    ],
+    advanced: [
+      { title: '📊 Analytics Dashboard', desc: 'Real-time insights into student performance, attendance, and engagement.', img: 'images/analytics.jpg' },
+      { title: '🔐 Role-Based Security', desc: 'Granular permissions across modules, with audit trails and access logs.', img: 'images/security.jpg' },
+      { title: '⚙️ Workflow Automation', desc: 'Custom approval flows, assignment rules, and record locking.', img: 'images/workflow.jpg' },
+      { title: '📲 Mobile App Integration', desc: 'Seamless sync with Android/iOS apps for parents and staff.', img: 'images/mobile.jpg' },
+      { title: '🌐 Multi-Tenant Architecture', desc: 'Scalable design for managing multiple schools with isolated data.', img: 'images/multitenant.jpg' },
+      { title: '🧠 AI-Powered Suggestions', desc: 'Smart nudges for attendance, grading, and parent engagement.', img: 'images/ai.jpg' },
+      { title: '📥 Bulk Import & Sync', desc: 'Excel/CSV import with real-time progress updates via SignalR.', img: 'images/import.jpg' },
+      { title: '🎨 Custom Branding', desc: 'Themeable UI with school logos, colors, and cultural motifs.', img: 'images/branding.jpg' }
+    ]
+  };
+
+  return {
+    active: 0,
+    features: data[type],
+    autoplayInterval: null,
+    touchStartX: 0,
+
+    startAutoplay() {
+      this.autoplayInterval = setInterval(() => this.next(), 5000);
+    },
+    stopAutoplay() {
+      clearInterval(this.autoplayInterval);
+    },
+    next() {
+      this.active = (this.active + 1) % this.features.length;
+    },
+    prev() {
+      this.active = (this.active - 1 + this.features.length) % this.features.length;
+    },
+    handleTouchStart(e) {
+      this.touchStartX = e.changedTouches[0].screenX;
+    },
+    handleTouchEnd(e) {
+      const touchEndX = e.changedTouches[0].screenX;
+      const deltaX = touchEndX - this.touchStartX;
+      if (Math.abs(deltaX) > 50) {
+        deltaX > 0 ? this.prev() : this.next();
+      }
+    }
+  };
+}
+</script>
+
+
+</body>
+</html>
